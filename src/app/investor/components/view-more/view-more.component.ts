@@ -26,6 +26,8 @@ export class ViewMoreComponent implements OnInit {
   idea_id:any;
   send_request:any;
   comments:any;
+  commentsreverse:any;
+  commentslist:any;
   req_button;
   rId;
 
@@ -93,6 +95,8 @@ export class ViewMoreComponent implements OnInit {
     this.investorService.viewComment(iId)
     .subscribe(res=>{
       this.comments = res.json();
+      this.commentslist=this.comments.comment;
+      this.commentsreverse=this.commentslist.reverse();
       //localStorage.setItem('idea', res.token);
       console.log(this.comments.comment);//buff plus buffii
     })

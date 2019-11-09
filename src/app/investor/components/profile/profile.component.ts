@@ -22,7 +22,9 @@ export class InvestorProfileComponent implements OnInit {
     organisation: "",
     imageURL: "",
     fname: "",
-    lname: ""
+    lname: "",
+    about: "",
+    field: ""
   }
 
   reviews = []
@@ -47,6 +49,8 @@ export class InvestorProfileComponent implements OnInit {
         this.investor.imageURL = user.imageURL;
         this.investor.fname = user.firstName;
         this.investor.lname = user.lastName;
+        this.investor.about = user.about;
+        this.investor.field = user.field;
 
         this.reviews = res.json().reviews;
         

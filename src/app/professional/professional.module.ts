@@ -21,7 +21,9 @@ import { MyIdeasComponent } from './components/professional-profile/my-ideas/my-
 import { EditIdeaComponent } from './components/professional-profile/edit-idea/edit-idea.component';
 import { ViewAllIdeasComponent } from './components/professional-dashbord/view-all-ideas/view-all-ideas.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { RequestsComponent } from './components/requests/requests.component'
+import { RequestsComponent } from './components/requests/requests.component';
+//import { ChatComponent } from '../chat/chat.component';
+
 
 @NgModule({
     imports: [
@@ -34,7 +36,8 @@ import { RequestsComponent } from './components/requests/requests.component'
       FloatingActionMenuModule,
       NgbModule,
       BarRatingModule,
-      ToastrModule
+      ToastrModule,
+      //ChatComponent
     ],
     declarations: [
         ProfessionalDashbordComponent,   
@@ -46,7 +49,8 @@ import { RequestsComponent } from './components/requests/requests.component'
       EditIdeaComponent,
       ViewAllIdeasComponent,
       CommentComponent,
-      RequestsComponent
+      RequestsComponent,
+      //ChatComponent
     ],
     exports: [
         ProfessionalDashbordComponent, 

@@ -15,7 +15,7 @@ export class ProfessionalProfileEditComponent implements OnInit {
   @Input() fname;
   @Input() lname;
   @Input() country;
-  //@Input() organisation;
+  
   
   constructor(
     private professionalService: professionalService,
@@ -27,16 +27,12 @@ export class ProfessionalProfileEditComponent implements OnInit {
         fname:[this.fname, Validators.required],
         lname:[this.lname, Validators.required],
         country:[this.country, Validators.required]
-        //organisation:[this.organisation, Validators.required]
       });
     
    }
 
   ngOnInit() {
-    // this.professionalService.getAllSubjects()
-    //   .subscribe(res => {
-    //     this.subjects = res.json().subject;
-    //   });
+   
   }
 
   countries: string[] = [
@@ -72,30 +68,6 @@ export class ProfessionalProfileEditComponent implements OnInit {
     "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"
   ]
 
-  // subjects = []
-  
-  // selectedCountries = []
-  // selectedSubjects = []
-
-  // addcountry(item){
-  //   this.selectedCountries.push(item);
-  // }
-
-  // removecountry(item){
-  //   this.selectedCountries.splice(this.selectedSubjects.indexOf(item), 1);
-  // }
-
-  // addSubject(item){
-  //   this.selectedSubjects.push(item);
-  // }
-
-  // removeSubject(item){
-  //   this.selectedSubjects.splice(this.selectedSubjects.indexOf(item), 1);
-  // }
-
-
-  //investor edit details
-
 
   editStage = false;
 
@@ -105,14 +77,11 @@ export class ProfessionalProfileEditComponent implements OnInit {
     let uId = this.auth.currentUser._id;
     let f = form.value;
 
-    //let loc = this.selectedCountries[0] === undefined ? this.country : this.selectedCountries[0];
-
     
     let user = {
       'firstName': f.fname,
       'lastName': f.lname,
       'country': f.country
-      //'organisation': f.organisation
     };
 
     this.professionalService.editProfile(uId,user)
@@ -129,7 +98,6 @@ export class ProfessionalProfileEditComponent implements OnInit {
     this.form.patchValue({
       fname: this.fname,
       lname: this.lname,
-      //organisation: this.organisation,
       country: this.country,
     })
   }

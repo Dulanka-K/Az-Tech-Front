@@ -14,6 +14,7 @@ export class CategoryComponent implements OnInit {
    ]
  
   ideas: any;
+  ideasreverse:any;
   
   constructor(
     private investorService: InvestorService,
@@ -32,15 +33,16 @@ export class CategoryComponent implements OnInit {
       this.investorService.boostedIdeas(status)
       .subscribe(res=>{
       this.ideas=res.json();
-      this.investorService.ideas.emit(this.ideas);
+      this.ideasreverse=this.ideas.reverse();
+      this.investorService.ideas.emit(this.ideasreverse);
     });
     }else{
       this.categoryButton = category;
       this.investorService.categoryView(category)
       .subscribe(res=>{
          this.ideas=res.json();
-         this.investorService.ideas.emit(this.ideas);
-        //console.log(this.ideas[0].content);
+         this.ideasreverse=this.ideas.reverse();
+      this.investorService.ideas.emit(this.ideasreverse);
       });
     }
     

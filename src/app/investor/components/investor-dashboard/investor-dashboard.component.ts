@@ -13,6 +13,7 @@ import { InvestorService } from 'src/app/investor/shared/services/investor-servi
 export class InvestorDashboardComponent implements OnInit {
 
   ideas: any;
+  ideasreverse:any;
   constructor(
     private router: Router,
     private investorService: InvestorService,
@@ -33,7 +34,8 @@ export class InvestorDashboardComponent implements OnInit {
     this.investorService.boostedIdeas(status)
     .subscribe(res=>{
       this.ideas=res.json();
-      this.investorService.ideas.emit(this.ideas);
+      this.ideasreverse=this.ideas.reverse();
+      this.investorService.ideas.emit(this.ideasreverse);
     });
     this.router.navigate(['investor/viewallideas']);
   }
@@ -41,17 +43,10 @@ export class InvestorDashboardComponent implements OnInit {
   config;
   buttons: Array<NgFloatingActionButtonModule> = [
     {
-      iconClass: 'fa fa-search',
-      label:"Requests",
+      iconClass: 'fas fa-comments',
+      label:"Chat",
       onClick: ()=>{
-        this.router.navigate(['investor/requests']);
-      }
-    },
-    {
-      iconClass: 'fa fa-address-book',
-      label:"Boost",
-      onClick: ()=>{
-        this.router.navigate(['investor/boost']);
+        this.router.navigate(['chat']);
       }
     },
     {

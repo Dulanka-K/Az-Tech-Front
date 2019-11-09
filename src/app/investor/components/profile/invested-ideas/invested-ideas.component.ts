@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class InvestedIdeasComponent implements OnInit {
 
   ideas: any;
+  ideasreverse:any;
 
   constructor(
     private investorService: InvestorService,
@@ -24,12 +25,11 @@ export class InvestedIdeasComponent implements OnInit {
     console.log(uId)
     this.investorService.getInvestedIdeas(uId)
     .subscribe(res=>{
-      // let i=res.json();
-      // this.idea.title = i.title;
-      // this.idea.content = i.content;
+      
       this.ideas = res.json();
+      this.ideasreverse = this.ideas.reverse();
       //localStorage.setItem('idea', res.token);
-      console.log(this.ideas);
+      console.log(this.ideasreverse);
     })
   }
 

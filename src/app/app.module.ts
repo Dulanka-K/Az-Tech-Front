@@ -51,6 +51,7 @@ import { ChatService } from './shared/services/chat.service';
     LoginProfessionalComponent,
     VerificationComponent,
     ChatComponent
+
   ],
   imports: [
     
@@ -70,6 +71,7 @@ import { ChatService } from './shared/services/chat.service';
     ReactiveFormsModule,
     FormsModule
   ],
+  // exports:[ChatComponent],
   providers: [
     RegisterService,
     AuthService,
