@@ -1,0 +1,33 @@
+
+        <div class="modal-body">
+
+          <form [formGroup]="form" (ngSubmit)="addIdea(form)" class="text-center border border-light p-5">
+  
+            <div class="mb-4">
+            <input type="text" id="title" class="form-control" formControlName="title" placeholder="Title">
+            </div>
+
+            <!-- <div class="mb-4">
+            <input type="text" id="category" class="form-control" formControlName="category" placeholder="Category">
+            </div> -->
+
+            
+              <div class="mb-4">
+                <select class="form-control" formControlName="category">
+                  <option selected >Category</option>
+                  <option *ngFor="let item of categories" >{{item}}</option>
+                </select>
+              </div>
+            
+            
+            <div class="mb-4">
+            <textarea rows="8" id="content" class="form-control" formControlName="content" placeholder="Content"></textarea>
+            </div>
+  
+  
+        
+        <div class="modal-footer">
+          <button type="submit" mdbBtn class="btn btn-outline-secondary btn-sm" mdbWavesEffect>Save</button>
+        </div>
+      </form>
+    </div>

@@ -1,0 +1,65 @@
+<div class="container p-4">
+    <div class="jumbotron rounded-top rounded-bottom">
+        <h2 class="h1-responsive card-header grey">{{idea.title}} 
+          <a (click)="profileModal.show();requestStatus(idea_id)"><h5 class="font-italic font-weight-bold">{{idea.username}}</h5></a></h2>
+        <p class="lead mt-5">{{idea.content}}</p>
+        <hr class="my-1">
+        <p><i class="far fa-thumbs-up"></i>{{idea.upvotes}} <i class="far fa-thumbs-down"></i>{{idea.downvotes}}
+        </p>
+        <!-- <a class="btn btn-primary btn-lg" role="button">Learn more</a> -->
+    </div>
+
+<div class="container p-4">
+<div *ngFor="let comment of comments['comment'].reverse()">
+    <div class="card mb-3">
+          <div class="card-body">
+              <h5 class="card-title h6">{{comment.username}}</h5>
+            <p class="card-text">{{comment.content}}</p>
+          </div>
+        </div>
+  </div>
+</div>
+</div>
+
+<div mdbModal #profileModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header mdb-color lighten-5">
+          <button type="button" class="close pull-right " aria-label="Close" (click)="profileModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">{{idea.username}}</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="container p-1">
+                <div class="row">
+                  <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                    <img [src]="profile.imageURL" height="150" width="150" class="rounded-circle">
+                    </div>
+                  <div class="col-md-4"></div>
+                </div>
+            </div>
+            
+            <div class="container">
+            <div class="justify-content-center">
+            <p class="font-weight-bold justify-content-center">E-mail: {{profile.email}}</p>
+            <p class="font-weight-bold">Country: {{profile.country}}</p>
+            <p class="font-weight-bold">Idea Title: {{idea.title}}</p>
+            </div>
+          </div>
+
+        </div>
+        <div *ngIf="req_button == false" class="modal-footer">
+        <button type="button" mdbBtn class="btn btn-outline-secondary btn-sm btn-sm" (click)="profileModal.hide();goToChat()"
+        mdbWavesEffect>Chat</button>
+      </div>
+        <div *ngIf="req_button == true" class="modal-footer">
+          <button type="button" mdbBtn class="btn btn-outline-secondary btn-sm btn-sm" (click)="sendRequest(idea.user,idea_id,idea.title)" (click)="profileModal.hide()"
+            mdbWavesEffect>Request</button>
+        </div>
+      </div>
+    </div>
+</div>

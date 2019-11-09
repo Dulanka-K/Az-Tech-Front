@@ -1,0 +1,82 @@
+<div class="container p-4">
+    <div *ngFor="let request of requestsreverse">
+        <div *ngIf="request.status === 'pending'">
+        <div class="card mb-3">
+              <div class="card-body">
+                  <p class="card-text">
+                    <a (click)="profileModal.show();investorProfile(request.from,request.username) ">{{request.username}}</a> 
+                    requested to invest to your idea 
+                      <a (click)="editIdea(request.idea)">{{request.ideaname}}</a></p>
+                <button class="btn btn-sm btn-success float-right mr-2" (click)="reqstatus('accepted',request._id)">Accept</button>
+                <button class="btn btn-sm btn-danger float-right mr-2" (click)="reqstatus('rejected',request._id)">Reject</button>
+            
+              </div>
+            </div>
+        </div>
+        <div *ngIf="request.status === 'accepted'">
+            <div class="card mb-3">
+                  <div class="card-body">
+                      <p class="card-text">
+                          <a (click)="profileModal.show() " (click)="investorProfile(request.from,request.username) ">{{request.username}}</a> 
+                          requested to invest to your idea 
+                            <a (click)="editIdea(request.idea)">{{request.ideaname}}</a></p>
+                    <!-- <button class="btn btn-sm btn-success float-right mr-2" (click)="reqstatus('accepted',request._id)">Accept</button>
+                    <button class="btn btn-sm btn-danger float-right mr-2" (click)="reqstatus('rejected',request._id)">Reject</button> -->
+                      <p class="text-success float-right"><b>You Accepted!</b></p>
+                  </div>
+                </div>
+            </div>
+            <div *ngIf="request.status === 'rejected'">
+                <div class="card mb-3">
+                      <div class="card-body">
+                          <p class="card-text">
+                              <a (click)="profileModal.show() " (click)="investorProfile(request.from,request.username) ">{{request.username}}</a> 
+                              requested to invest to your idea 
+                                <a (click)="editIdea(request.idea)">{{request.ideaname}}</a></p>
+                        <!-- <button class="btn btn-sm btn-success float-right mr-2" (click)="reqstatus('accepted',request._id)">Accept</button>
+                        <button class="btn btn-sm btn-danger float-right mr-2" (click)="reqstatus('rejected',request._id)">Reject</button> -->
+                        <p class="text-danger float-right"><b>You Rejected!</b></p>
+                      </div>
+                    </div>
+                </div>
+      </div>
+    </div>
+
+    <div mdbModal #profileModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header mdb-color lighten-5">
+          <button type="button" class="close pull-right " aria-label="Close" (click)="profileModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">{{investorname}}</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="container p-1">
+                <div class="row">
+                  <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                    <img [src]="profile.imageURL" height="150" width="150" class="rounded-circle">
+                    </div>
+                  <div class="col-md-4"></div>
+                </div>
+            </div>
+            
+            <div class="container">
+            <div class="justify-content-center">
+            <p class="font-weight-bold justify-content-center">E-mail: {{profile.email}}</p>
+            <p class="font-weight-bold">Country: {{profile.country}}</p>
+            <p class="font-weight-bold">Organisation: {{profile.organisation}}</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn class="btn btn-outline-secondary btn-sm btn-sm" (click)="profileModal.hide();goToChat()"
+            mdbWavesEffect>Chat</button>
+        </div>
+      </div>
+    </div>
+</div>

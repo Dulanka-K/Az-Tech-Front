@@ -1,0 +1,113 @@
+<form [formGroup]="form" (ngSubmit)="updateProfile(form)">
+
+
+    <div class="p-2">
+      <h5 class="grey-text" style="padding:0; margin:0;"><b> Edit Profile  <fb-like class="float-right mb-1"></fb-like>  </b> </h5>
+      <hr>
+    
+      <div>
+        <div class="row">
+          <div class="col-md-4">First Name</div>
+          <div class="col-md-8 ">
+            <input type="text" id="name" class="borderless" [placeholder]="fname" formControlName="fname">
+            
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-4">Last Name</div>
+          <div class="col-md-8">
+            <input type="text" id="name" class="borderless" [placeholder]="lname" formControlName="lname">
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-md-4">Organisation</div>
+          <div class="col-md-8">
+            <input type="text" id="name" class="borderless" [placeholder]="organisation" formControlName="organisation">
+          </div>
+        </div>
+    
+    
+        <!-- add country -->
+        <div class="row pt-2 mt-4">
+          <div class="col-md-4 pt-2">Country</div>
+          <div class="col-md-8">
+    
+            <div class="btn-group" mdbDropdown>
+              <button type="button" mdbBtn color="blue-grey" class="waves-light" outline="true" mdbWavesEffect class="btn-sm">Country</button>
+              <button type="button" mdbDropdownToggle mdbBtn color="blue-grey" class="dropdown-toggle dropdown-toggle-split px-3 waves-light btn-sm smooth-scroll"
+                mdbWavesEffect></button>
+              <div class="dropdown-menu force-scroll">
+                <a class="dropdown-item" *ngFor="let item of countries" (click)="addcountry(item)">{{item}}</a>
+              </div>
+            </div>
+    
+            <p class="mt-2">{{location}}</p>
+    
+          </div>
+        </div>
+    
+    
+    
+    
+        <!-- country list -->
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+            <ul class="list-group mt-2 mb-2 pl-3">
+              <li style="list-style:none;" *ngFor="let item of selectedCountries"><small> {{item}} </small>
+                <i class="fa fa-times red-text" (click)="removecountry(item)"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+    
+    
+        <!-- add subject -->
+        <!-- <div class="row ">
+          <div class="col-md-4 pt-2">Subjects</div>
+          <div class="col-md-8">
+    
+            <div class="btn-group" mdbDropdown>
+              <button type="button" mdbBtn color="blue-grey" class="waves-light" outline="true" mdbWavesEffect class="btn-sm">Subject</button>
+              <button type="button" mdbDropdownToggle mdbBtn color="blue-grey" class="dropdown-toggle dropdown-toggle-split px-3 waves-light btn-sm"
+                mdbWavesEffect></button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" *ngFor="let item of subjects" (click)="addSubject(item)">{{item}}</a>
+              </div>
+            </div>
+    
+            <p class="mt-2">{{subject}}</p>
+    
+          </div>
+        </div> -->
+      </div>
+    
+    
+      <!-- subject list -->
+      <!-- <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+          <ul class="list-group mt-2 pl-3">
+            <li style="list-style:none;" *ngFor="let item of selectedSubjects"> <small> {{item}} </small>
+              <i class="fa fa-times red-text" (click)="removeSubject(item)"></i>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+    
+    
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <button class="btn btn-sm btn-success d-flex" type="submit" *ngIf="editStage">Save</button>
+          <button class="btn btn-sm btn-danger d-flex" type="button" (click)="editProfile()" *ngIf="!editStage">Edit</button>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    
+    </div>
+    
+    
+    </form>

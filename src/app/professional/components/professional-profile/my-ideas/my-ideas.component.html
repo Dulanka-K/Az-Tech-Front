@@ -1,0 +1,16 @@
+<div *ngFor="let idea of idealistreverse">
+  <div class="card mb-3">
+        <h5 class="card-header h5 grey">{{idea.category}}</h5>
+        <div class="card-body">
+          <h5 class="card-title h6">{{idea.title}}</h5>
+          <p class="card-text">{{idea.content}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <i class="far fa-thumbs-up"></i>{{idea.upvotes}} 
+          <i class="far fa-thumbs-down"></i>{{idea.downvotes}}
+          <button type="button" mdbBtn class="btn btn-outline-secondary btn-sm float-right" (click)="editIdea(idea._id)" mdbWavesEffect>View</button>
+        </div>
+      </div>
+</div>
+
+

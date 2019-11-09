@@ -1,0 +1,145 @@
+<footer class="page-footer font-small stylish-color-dark darken-5 newFooterClass">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+          <a class="fb-ic">
+            <i class="fa fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="tw-ic">
+            <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="gplus-ic">
+            <i class="fa fa-google fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="li-ic">
+            <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="ins-ic">
+            <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="pin-ic">
+            <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-12 text-center">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section class="mb-4">
+
+          <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+          <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact
+            us directly. Our team will come back to you within
+            a matter of hours to help you.</p>
+
+          <div class="row">
+
+            <div class="col-md-12 mb-md-0 mb-5">
+              <form id="contact-form"  [formGroup]="contactForm" (ngSubmit)="sendMessage(contactForm)">
+
+                <!--Grid row-->
+                <div class="row">
+
+                  <!--Grid column-->
+                  <div class="col-md-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="name" name="name" class="form-control">
+                      <label for="name" class="white-text">Your name</label>
+                    </div>
+                  </div>
+                  <!--Grid column-->
+
+                  <!--Grid column-->
+                  <div class="col-md-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="email" name="email" class="form-control" formControlName="email">
+                      <label for="email" class="white-text">Your email</label>
+                    </div>
+                  </div>
+                  <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="md-form mb-0">
+                      <input type="text" id="subject" name="subject" class="form-control">
+                      <label for="subject" class="white-text">Subject</label>
+                    </div>
+                  </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                  <!--Grid column-->
+                  <div class="col-md-12">
+
+                    <div class="md-form">
+                      <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" formControlName="content"></textarea>
+                      <label for="message" class="white-text">Your message</label>
+                    </div>
+
+                  </div>
+                </div>
+                <!--Grid row-->
+                <div class="text-center text-md-left">
+                  <button class="btn btn-primary" type="submit" [disabled]="contactForm.invalid">Send</button>
+                </div>
+
+              </form>
+
+            </div>
+            <!--Grid column-->
+
+          </div>
+
+        </section>
+        <!--Section: Contact v.2-->
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/"> Imsomniac Industries</a>
+  </div>
+</footer>

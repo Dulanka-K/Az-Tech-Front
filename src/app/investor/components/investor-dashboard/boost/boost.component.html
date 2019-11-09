@@ -1,0 +1,190 @@
+<hr>
+
+<div class="row pt-2 pb-4">
+  <div class="col-md-12 text-center">
+    <h1>
+      <img src="../../../../../assets/icons/reach.png" style="margin:0; padding:0;">
+      Reach out to more professionals...! Boost your profile now...!</h1>
+  </div>
+</div>
+
+
+<div class="container pointer">
+  <mdb-carousel [animation]="'slide'">
+    <mdb-carousel-item>
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
+    </mdb-carousel-item>
+  </mdb-carousel>
+</div>
+
+<div class="row mt-5 p-3">
+  <div class="col">
+
+
+    <div *ngIf="boosted">
+      <div class="jumbotron text-center animated slideInLeft">
+        <h2 class="card-title h2">
+          <img src="../../../../../assets/icons/boost.png">
+          You are Boosted</h2>
+        <p class="blue-text my-4 font-weight-bold">You have successfully reached this much professionals</p>
+        <div class="row d-flex justify-content-center">
+          <div class="col-xl-7 pb-2">
+
+            <h1 class="display-1">{{reaches}}</h1>
+          </div>
+
+        </div>
+
+        <h6>You left  <span *ngIf="boostData"> {{boostData.remaining}} </span>   days..! Your package will expire on {{boostData.expiryDate | date}}.</h6>
+
+        <hr class="my-4">
+
+        <div class="pt-2">
+          <button type="button" (click)="frame2.show()"
+           class="btn btn-outline-primary waves-effect">Renew Package<i class="fa fa-plus ml-1"></i></button>
+        </div>
+
+      </div>
+    </div>
+
+    <div *ngIf="!boosted">
+      <div class="jumbotron text-center">
+        <h2 class="card-title h2">
+          <img src="../../../../../assets/icons/sadface.png" class="animated rotateIn">
+          Not professional yet..?</h2>
+        <div class="row d-flex justify-content-center">
+          <div class="col-xl-7 pb-2">
+
+            <h1 class="display-5">Boost your profile right now!</h1>
+          </div>
+
+        </div>
+        <div class="pt-2">
+          <img src="../../../../../assets/icons/hand.png" alt="">
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
+  <div class="col pt-5  mt-5 text-center" (click)="frame.show()">
+
+    <div>
+      <img src="../../../../../assets/icons/packages.png" class="pointer animated rotateIn">
+      <p></p>
+      <h3 class="pointer mt-1 animated slideInRight">Choose your package</h3>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div mdbModal #frame="mdbModal" class="modal fade ml-5 mr-5" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fluid" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Select Your Package</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="card-deck">
+
+          <!-- ===================== -->
+
+          <div class="card card-image" style="background-image: url(https://theislandnow.com/wp-content/uploads/2018/01/BONS-platinum-package.jpg);">
+
+            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text"><i class="fa fa-chart-pie"></i></h5>
+                <h3 class="card-title pt-2"><strong *ngIf="pack1"> {{pack1.name}} </strong></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                  optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                  Odit sed qui, dolorum!.</p>
+                <a class="btn btn-danger" (click)="boostProfile(platinum)" (click)="frame.hide()"><i class="fa fa-clone left"></i> Boost </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ================= -->
+
+          <div class="card card-image" style="background-image: url(../../../../../assets/images/gold-package.jpeg);">
+
+            <div class="text-white text-center d-flex align-items-center rgba-black py-5 px-4">
+              <div>
+                <h5 class="pink-text"><i class="fa fa-chart-pie"></i></h5>
+                <h3 class="card-title pt-2"><strong *ngIf="pack2">{{pack2.name}}</strong></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                  optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                  Odit sed qui, dolorum!.</p>
+                <a class="btn btn-danger"(click)="boostProfile(gold)" (click)="frame.hide()"><i class="fa fa-amazon-pay"></i> Boost </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ======================== -->
+
+          <div class="card card-image" style="background-image: url(https://www.conciergeservicesverrado.com/wp-content/uploads/2017/09/Silver-Package-Graphics-Design-300x300.png);">
+
+            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text"><i class="fa fa-chart-pie"></i></h5>
+                <h3 class="card-title pt-2"><strong *ngIf="pack3"> {{pack3.name}}</strong></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                  optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                  Odit sed qui, dolorum!.</p>
+                <a class="btn btn-danger" (click)="boostProfile(silver)" (click)="frame.hide()"><i class="fa fa-clone left"></i> Boost </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div mdbModal #frame2="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-notify modal-info" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header d-flex justify-content-center">
+        <p class="heading">Are you sure?</p>
+      </div>
+      <div class="modal-body">
+        <img src="../../../../../assets/icons/boost.png" class="animated rotateIn" alt="">
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a mdbBtn color="info" outline="true" class="waves-effect" (click)="renewBoost()" (click)="frame2.hide()"
+          mdbWavesEffect>Yes</a>
+        <a type="button" mdbBtn color="info" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame2.hide()">No</a>
+      </div>
+    </div>
+  </div>
+</div>
+

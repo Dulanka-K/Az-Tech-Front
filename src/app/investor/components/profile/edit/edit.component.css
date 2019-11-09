@@ -1,0 +1,8 @@
+.borderless{
+    border: none;
+}
+
+.force-scroll{
+    overflow-y: scroll;
+    height: 200px;
+}

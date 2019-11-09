@@ -1,0 +1,58 @@
+<form [formGroup]="form" (ngSubmit)="updateProfile(form)">
+
+
+    <div class="p-2">
+      <h5 class="grey-text" style="padding:0; margin:0;"><b> Edit Profile</b> </h5>
+      <hr>
+    
+      <div>
+        <div class="row">
+          <div class="col-md-4">First Name</div>
+          <div class="col-md-8 ">
+            <input type="text" id="fname" class="borderless" [placeholder]="fname" formControlName="fname">
+            
+          </div>
+        </div>
+
+        <P>
+
+        </P>
+
+        <div class="row">
+          <div class="col-md-4">Last Name</div>
+          <div class="col-md-8">
+            <input type="text" class="borderless" [placeholder]="lname" formControlName="lname">
+          </div>
+        </div>
+    
+    
+        <!-- add country -->
+        <div class="row pt-2 mt-4">
+          <div class="col-md-4 pt-2">Country</div>
+          <div class="col-md-8">
+            <select class="custom-select" formControlName="country">
+                <option selected >{{country}}</option>
+              <option *ngFor="let item of countries" >{{item}}</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    
+    
+     
+    
+    
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <button class="btn btn-sm btn-success d-flex" type="submit" *ngIf="editStage">Save</button>
+          <button class="btn btn-sm btn-danger d-flex" type="button" (click)="editProfile()" *ngIf="!editStage">Edit</button>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    
+    </div>
+    
+    
+    </form>

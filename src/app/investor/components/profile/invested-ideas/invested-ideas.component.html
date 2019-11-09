@@ -1,0 +1,16 @@
+<div *ngFor="let idea of ideas">
+        <div *ngFor="let i of idea['idea']">
+        <div class="card mb-3">
+              <h5 class="card-header h5 grey">{{i.category}}</h5>
+              <div class="card-body">
+                <h5 class="card-title h6">{{i.title}}</h5>
+                <p class="card-text">{{i.content}}</p>
+              </div>
+              <div class="card-footer text-muted">
+                <i class="far fa-thumbs-up"></i>{{i.upvotes}} 
+                <i class="far fa-thumbs-down"></i>{{i.downvotes}}
+                <button type="button" mdbBtn class="btn btn-outline-secondary btn-sm float-right" (click)="viewIdea(i._id)" mdbWavesEffect>View</button>
+              </div>
+            </div>
+        </div>
+      </div>

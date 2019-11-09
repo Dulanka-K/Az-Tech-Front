@@ -1,0 +1,122 @@
+<div class="container p-4">
+    <div class="border testimonial-card">
+
+        <div class="card-up lighten-4 modal-header" style="height:80px;">
+            <strong> <b>
+                <h3 class="p-1"> <strong> {{professional.name}}</strong></h3>
+              </b> </strong>
+          </div>
+  
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="avatar mx-auto white p-4">
+            <div class="view overlay" (click)="frame.show()">
+              <img [src]="professional.imageURL" class="rounded-circle hoverable" height="170" width="170">
+              <div class="mask flex-center rgba-black-light rounded-circle" style="height:170px; width:170px;">
+                <p class="white-text">Update Profile Picture</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+  
+        </div>
+      </div>
+  
+      <div class="card-body">
+        <div style="text-align:center;">
+          <button type="button" mdbBtn class="btn btn-secondary btn-sm" (click)="basicModal.show()"
+            mdbWavesEffect>+ Idea</button>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-7 pr-2">
+          <div class="container border pt-4">
+            <h5 class="grey-text"><b> My Ideas </b> </h5>
+            <hr>
+            <div class="container" style="overflow-y: scroll; max-height:507px; min-height:507px;">
+              
+              <app-my-ideas></app-my-ideas>
+            </div>
+  
+          </div>
+  
+        </div>
+  
+        <div class="col-md-5">
+          <div class="container border pt-3" style="min-height:300px;">
+            <prof-app-edit [fname]="professional.fname" [lname]="professional.lname" [country]="professional.country"></prof-app-edit>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ========================MODAL===================MODAL============================-->
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header mdb-color lighten-5">
+          <button type="button" class="close pull-right " aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Add Idea</h4>
+        </div>
+        <app-add-new-idea></app-add-new-idea>
+      </div>
+    </div>
+</div>
+  
+  
+  
+  <!-- profile picture update modal -->
+  <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Update Profile Picture</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+  
+          <div class="file-upload-wrapper">
+            <input type="file" id="input-file-now" class="file-upload" (change)="onFileSelected($event)" />
+          </div>
+  
+          <div class="container p-1">
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <img [src]="url" height="150" width="150" class="rounded-circle" *ngIf="imageView">
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+          </div>
+  
+  
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button mdbBtn color="default" class="waves-light" mdbWavesEffect (click)="updateImage()" (click)="frame.hide()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>

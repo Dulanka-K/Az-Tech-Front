@@ -1,0 +1,35 @@
+html,
+        
+        .view {
+          height: 100vh;
+        }
+
+        @media (max-width: 500px) {
+          html,
+          body,
+          header,
+          .view {
+            height: 815px;
+          }
+        } 
+
+         @media (min-width: 1000px) and (max-width: 900px) {
+          html,
+          body,
+          header,
+          .view  {
+            height: 650px;
+          }
+        }
+
+        /* .intro-2 {
+          background: url("http://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img%20(11).jpg")no-repeat center center;
+          background-size: cover;
+      } */
+        
+
+        .card {
+            background-color: rgba(229, 228, 255, 0.2);
+        }
+       
+

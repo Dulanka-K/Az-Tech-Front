@@ -1,0 +1,34 @@
+<div class="container p-4">
+    <div class="jumbotron rounded-top rounded-bottom">
+        <h2 class="h1-responsive card-header grey">{{idea.title}} <h5 class="font-italic font-weight-bold">{{idea.username}}</h5></h2>
+        <p class="lead mt-5">{{idea.content}}</p>
+        <hr class="my-1">
+        <p><i class="far fa-thumbs-up"></i>{{idea.upvotes}} <i class="far fa-thumbs-down"></i>{{idea.downvotes}}
+        </p>
+        <!-- <a class="btn btn-primary btn-lg" role="button">Learn more</a> -->
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="addComment(form)">
+    <div class="form-group shadow-textarea">
+        <textarea class="form-control z-depth-1" id="content" rows="3" formControlName="content" 
+        placeholder="Write comment here..."></textarea>
+        <button type="submit" mdbBtn class="btn btn-outline-secondary btn-sm float-right" mdbWavesEffect>Add</button>
+      </div>
+      
+    </form>
+
+
+    
+    </div>
+    <div class="container p-4">
+    <div *ngFor="let comment of commentsreverse">
+        <div class="card mb-3">
+              <div class="card-body">
+                  <h5 class="card-title h6">{{comment.username}}</h5>
+                <p class="card-text">{{comment.content}}</p>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    

@@ -1,0 +1,57 @@
+<section class="view intro-2" style="background-image: url(../../../../../assets/images/login.jpg);">
+  <div *ngIf="userSelected">
+    <div *ngIf="loginView === 'investor'" style="margin-top:12%;">
+      <app-login-investor></app-login-investor>
+    </div>
+  
+    <div *ngIf="loginView === 'professional'" style="margin-top:12%;">
+      <app-login-professional></app-login-professional>
+    </div>
+  </div>
+  
+  <div *ngIf="!userSelected">
+  
+    <div class="container" style="margin-top:14%;">
+      <div class="row">
+        <div class="col-md-6">
+  
+          <div class="card card-image mb-3 animated slideInLeft text-center" style="background-image: url(../../../../../assets/images/professional.jpg);">        
+            <div class="text-white text-center d-flex align-items-center rgba-black-light py-5 px-4">
+              <div>
+                <h3 class="card-title pt-2"><strong>I'm a professional</strong></h3>
+  
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non laudantium libero aliquid! Saepe, illo aspernatur? Consequatur quo, sint nisi neque earum porro, amet doloremque, modi consectetur alias dignissimos debitis quae.</p>
+  
+                <!-- <a mdbBtn color="dark" class="waves-light btn-sm" mdbWavesEffect
+                (click)="toggleUser('professional')"
+                ><i class="fa fa-clone left"></i>Start as a professional</a> -->
+                <button mdbBtn type="button" color="light-green" mdbWavesEffect (click)="toggleUser('professional')">Start as a professional</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="card card-image mb-3 animated slideInRight" style="background-image: url(../../../../../assets/images/investor.jpg);">        
+            <div class="text-white text-center d-flex align-items-center rgba-black-light py-5 px-4">
+              <div>
+                <h3 class="card-title pt-2"><strong>I'm a investor</strong></h3>
+                
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi in debitis nulla inventore id dolorem voluptas qui cupiditate beatae repellendus, iure non rem deleniti repudiandae eaque optio assumenda a. Repudiandae!</p>
+                
+                  <!-- <a mdbBtn color="dark" class="waves-light btn-sm" mdbWavesEffect
+                (click)="toggleUser('investor')"
+                ><i class="fa fa-clone left"></i>Start as a investor</a> -->
+                <button mdbBtn type="button" color="light-green" mdbWavesEffect (click)="toggleUser('investor')">Start as a investor</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>

@@ -1,0 +1,19 @@
+<app-categoryview></app-categoryview>
+<div class="container p-4">
+
+<div *ngFor="let idea of viewIdeas">
+    <div class="card mb-3">
+          <h5 class="card-header h5 grey">{{idea.username}}</h5>
+          <div class="card-body">
+            <h5 class="card-title h6">{{idea.title}}</h5>
+            <p class="card-text">{{idea.content}}</p>
+          </div>
+          <div class="card-footer text-muted">
+            <a cursor:pointer><i class="far fa-thumbs-up" (click)="vote(idea._id,this.upvotes=true)"></i></a>{{idea.upvotes}} 
+            <a cursor:pointer><i class="far fa-thumbs-down" (click)="vote(idea._id,this.downvotes=true)"></i></a>{{idea.downvotes}}
+            <button type="button" mdbBtn class="btn btn-outline-secondary btn-sm float-right" (click)="editIdea(idea._id)" mdbWavesEffect>View</button>
+          </div>
+        </div>
+  </div>
+
+</div>
