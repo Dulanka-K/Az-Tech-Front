@@ -43,11 +43,11 @@
               <div class="chat_people">
                 <!-- <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div> -->
                 <div class="chat_ib">
-                  <div *ngIf="messageAmt[i].length == 0">
+                  <div *ngIf="messageAmt[i] == 0">
                     <a  (click)="selectChat(i)">{{x}}</a>
                   </div>
-                  <div *ngIf="messageAmt[i].length != 0">
-                  <a  (click)="selectChat(i)">{{x}} {{messageAmt[i].length}}</a>
+                  <div *ngIf="messageAmt[i] != 0">
+                  <a  (click)="selectChat(i)">{{x}} {{messageAmt[i]}}</a>
                   </div>
                   <p></p>
                 </div>

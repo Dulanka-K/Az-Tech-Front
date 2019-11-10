@@ -26,14 +26,6 @@ const routes: Routes = [
       path: 'comment',
       component: CommentComponent
     }
-    
-    // {
-    //   path: 'profile',
-    //   component: ProfessionalProfileComponent,
-    //   children: [
-    //     {path: "editidea", component: EditIdeaComponent}
-    //   ]
-    // }
   ];
   
   @NgModule({

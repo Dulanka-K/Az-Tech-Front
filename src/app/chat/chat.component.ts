@@ -25,10 +25,10 @@ export class ChatComponent implements OnInit {
   history;
   msg;
   receiver=[];
-  x;
   name: Array<String>=[];
   selectedName;
   messageAmt = [];
+  unread = [];
 
   msgDetail ={
     sendId:'',
@@ -60,26 +60,29 @@ export class ChatComponent implements OnInit {
         })
       
       });
-      console.log(this.receiver[0]._id);
+      console.log(this.receiver);
       console.log(this.name);
 //================================================
+      
       this.receiver.forEach(element => {
-        console.log("in");
-          if(element['_id'] == sender){
-            this.messageAmt.push(null);
-          }
-          else{
-        this.chatService.unreadMessages(element['_id']).subscribe(res =>{
-          let amount = res.json();
+        console.log(element);
+          // if(element['_id'] == sender){
+          //   this.messageAmt.push(0);
+          // }
+          // else{
+        this.chatService.unreadMessages(element['_id'],sender).subscribe(res =>{
+          this.unread = res.json();
+          console.log(this.unread.length);
+          let amount = this.unread.length;
           this.messageAmt.push(amount);
   
         })
-          }
+          // }
       });
 
     });
 
-    
+    console.log(this.messageAmt);
 
     this.activateRouter.queryParams.subscribe(params=>{
       
@@ -103,7 +106,7 @@ export class ChatComponent implements OnInit {
     
     console.log(this.msgDetail.sendId);
     
-    this.sub = timer(0,500).pipe(switchMap(()=>this.chatService.loadHistory(this.histroyDetail)))
+    this.sub = timer(0,1000).pipe(switchMap(()=>this.chatService.loadHistory(this.histroyDetail)))
     .subscribe(result=>{
       this.history=result.json();
     
@@ -147,14 +150,16 @@ export class ChatComponent implements OnInit {
 
     this.messageAmt[id] = 0;
 
-    this.chatService.magStatus(this.receiver[id]._id)
+    this.histroyDetail.senderId=this.auth.currentUser._id;//sender id
+
+    this.chatService.magStatus(this.receiver[id]._id,this.histroyDetail.senderId)
     .subscribe(res=>{
       console.log(res.json());
     });
 
     this.selectedName = this.name[id];
 
-    this.histroyDetail.senderId=this.auth.currentUser._id;//sender id
+    
 
     if(this.receiver[id]._id == this.histroyDetail.senderId)
     {

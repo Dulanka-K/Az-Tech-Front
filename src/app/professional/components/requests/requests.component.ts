@@ -29,7 +29,10 @@ export class RequestsComponent implements OnInit {
     country: "",
     imageURL: "",
     fname: "",
-    lname: ""
+    lname: "",
+    organisation: "",
+    field: "",
+    about: ""
   }
 
   ngOnInit() {
@@ -69,12 +72,16 @@ export class RequestsComponent implements OnInit {
     this.professionalService.getProfessionalProfile(this.rId)
       .subscribe(res => {
         let user = res.json();
+        console.log(user);
         this.profile.email = user.email;
         this.profile.name = user.firstName + " " + user.lastName;
         this.profile.country = user.country;
         this.profile.imageURL = user.imageURL;
         this.profile.fname =  user.firstName;
         this.profile.lname =user.lastName;
+        this.profile.organisation = user.organisation;
+        this.profile.field = user.field;
+        this.profile.about = user.about;
 
       })
   }

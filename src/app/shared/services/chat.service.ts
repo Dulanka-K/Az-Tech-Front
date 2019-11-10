@@ -24,11 +24,11 @@ export class ChatService {
     return this.http.get(environment.url+'/userProfile/'+uId);
   }
 
-  unreadMessages(receiveId) {
-    return this.http.get(environment.url+'/unreadMessages/'+receiveId);
+  unreadMessages(receiveId,sendId) {
+    return this.http.get(environment.url+'/unreadMessages/'+receiveId+'/'+sendId);
   }
 
-  magStatus(receiveId){
-    return this.http.post(environment.url+'/setMsgStatus/'+receiveId,status);
+  magStatus(receiveId,sendId){
+    return this.http.post(environment.url+'/setMsgStatus/'+receiveId+'/'+sendId,status);
   }
 }
