@@ -3,6 +3,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { RegisterService } from 'src/app/shared/services/register.service'
+
 
 @Component({
   selector: 'app-login-investor',
@@ -18,7 +20,9 @@ export class LoginInvestorComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private RegisterService:RegisterService,
     private toastr: ToastrManager
+
   ) { 
     this.form = this.fb.group({
       email: ['', [
@@ -46,7 +50,7 @@ export class LoginInvestorComponent implements OnInit {
       return;
     }
     let user = form.value;
-    user['role'] = 'investor';
+    //user['role'] = 'investor';
     this.authService.loginUser(user).
       subscribe(response=>{
         console.log(response.json());
@@ -54,7 +58,14 @@ export class LoginInvestorComponent implements OnInit {
         if(res.success){
           this.toastr.successToastr('Login successfully', 'Success!');
           localStorage.setItem('token', res.token);
-          this.router.navigate(['investor']);
+          if(this.authService.currentUser){
+            if(this.authService.currentUser.role === "professional"){
+              this.router.navigate(['professional']);
+            }else if(this.authService.currentUser.role === "admin"){
+              this.router.navigate(['admin-dashboard']);
+            }else{
+              this.router.navigate(['investor']);
+            }}
           //window.location.reload();
         }else{
           if(!res.confirmed){
@@ -75,5 +86,12 @@ export class LoginInvestorComponent implements OnInit {
   get email(){return this.form.get('email')}
   get password(){return this.form.get('password')}
 
+  forgotPassword(email){
+    console.log(email)
+    this.RegisterService.email.emit(email);
 }
+
+}
+
+
 

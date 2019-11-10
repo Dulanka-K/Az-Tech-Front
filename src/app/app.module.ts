@@ -31,6 +31,12 @@ import { InvestorModule } from './investor/investor.module';
 import {ProfessionalModule} from './professional/professional.module';
 import { ChatComponent } from './chat/chat.component';
 import { ChatService } from './shared/services/chat.service';
+import { AdminComponent } from './admin/admin.component';
+import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
+import { AdminNavbarComponent } from './admin/components/admin-dashboard/admin-navbar/admin-navbar.component';
+import { AllIdeasComponent } from './admin/components/admin-dashboard/all-ideas/all-ideas.component';
+import { AllUsersComponent } from './admin/components/admin-dashboard/all-users/all-users.component';
+import { BoostedIdeasComponent } from './admin/components/admin-dashboard/boosted-ideas/boosted-ideas.component';
 
 
 
@@ -48,7 +54,13 @@ import { ChatService } from './shared/services/chat.service';
     LoginInvestorComponent,
     LoginProfessionalComponent,
     VerificationComponent,
-    ChatComponent
+    ChatComponent,
+    AdminComponent,
+    AdminDashboardComponent,
+    AdminNavbarComponent,
+    AllIdeasComponent,
+    AllUsersComponent,
+    BoostedIdeasComponent
 
   ],
   imports: [

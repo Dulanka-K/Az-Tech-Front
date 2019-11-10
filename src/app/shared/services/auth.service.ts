@@ -48,9 +48,4 @@ export class AuthService {
   }
 
 
-  verifyEmail(p) {
-    return this.http.post('https://guarded-beyond-19031.herokuapp.com/verify', p);
-  }
-
-
 }

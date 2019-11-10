@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+ 
+
+}
+.main{
+    width:100%
+}
+.professional{
+    width:50%;
+    text-align: center;
+    float: left;
+    border-right: 1px solid rgb(151, 150, 150);
+    height: 600px;
+}
+.investor{
+    width:50%;
+    text-align: center;
+    float:right
+}
+</style>
+</head>
+<body>
+    <div>
+    <br>
+<div class="main grey-text">
+<div class="professional">
+<h4>Professional Users</h4>
+<div class="container p-4">
+
+<div>
+        <div *ngFor="let Puser of Pusers"> <!--loop to view users one by one from viewUsers array-->
+
+    <div class="card mb-3" style="height:50px" >
+
+        <div class="row" style="margin-top: 10px" >
+            <div class="col-8">
+
+                <p class="card-text" style="float: left;margin-left: 10px; color: black">{{Puser.firstName}}  {{Puser.lastName}}</p>
+            </div>
+            <div class="col-2">
+
+                <button class="" type="button" class="btn btn-sm btn-warning d-flex" (click)="warn(Puser.email)" >Warn</button>
+            </div>
+            <div class="col-2">
+                <button class="" type="button" class="btn btn-sm btn-danger d-flex" (click)="removeUser(Puser._id)" >Remove</button>
+
+            </div>
+        </div>
+          
+    
+        </div>
+  </div>
+
+</div>
+</div>
+</div>
+<div class="investor">
+<h4>Investors</h4>
+<div class="container p-4">
+
+<div>
+    <div *ngFor="let Iuser of Iusers"> <!--loop to view users one by one from viewUsers array-->
+
+<div class="card mb-3" style="height:50px" >
+
+    <div class="row" style="margin-top: 10px" >
+        <div class="col-8">
+
+            <p class="card-text" style="float: left;margin-left: 10px; color: black">{{Iuser.firstName}}  {{Iuser.lastName}}</p>
+        </div>
+        <div class="col-2">
+
+            <button class="btn btn-sm btn-warning d-flex" type="button" (click)="warn(Iuser.email)" >Warn</button>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-sm btn-danger d-flex" type="button" (click)="removeUser(Iuser._id)" >Remove</button>
+
+        </div>
+    </div>
+      
+
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</body>

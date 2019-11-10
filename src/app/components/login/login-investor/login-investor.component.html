@@ -12,7 +12,11 @@
           </div>
         </div>
         <button [disabled]="form.invalid" mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
-        <!-- <button [disabled]="form.invalid" mdbBtn block="true" class="my-4 mdb-color darken-3" type="submit">Sign in</button> -->
+        <small>
+          <a  (click)="forgotPassword(form.value.email)" routerLink="/verify" >Forgot password</a>
+        </small>
+      
+        <br>
         <small>Not a member?
           <a routerLink="/registerInvestor">Register</a>
         </small>

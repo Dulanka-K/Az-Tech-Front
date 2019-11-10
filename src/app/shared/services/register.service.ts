@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import { environment } from 'src/environments/environment';
 
@@ -14,5 +14,11 @@ export class RegisterService {
   registerUser(user) {
     return this.http.post(environment.url+'/register', user);
   }
+
+  forgotPassword(email){
+    return this.http.get(environment.url+'/forgotPassword/'+email);
+
+  }
+  email = new EventEmitter<string>()
 
 }

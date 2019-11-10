@@ -1,4 +1,6 @@
-<div class="container p-4">
+
+
+<div class="container p-4" >
     <div class="jumbotron rounded-top rounded-bottom">
         <h2 class="h1-responsive card-header grey">{{idea.title}} <h5 class="font-italic font-weight-bold">{{idea.username}}</h5></h2>
         <p class="lead mt-5">{{idea.content}}</p>
@@ -8,7 +10,7 @@
         <!-- <a class="btn btn-primary btn-lg" role="button">Learn more</a> -->
     </div>
 
-    <form [formGroup]="form" (ngSubmit)="addComment(form)">
+    <form [formGroup]="form" (ngSubmit)="addComment(form)" style="background-color: blue">
     <div class="form-group shadow-textarea">
         <textarea class="form-control z-depth-1" id="content" rows="3" formControlName="content" 
         placeholder="Write comment here..."></textarea>
@@ -20,7 +22,7 @@
 
     
     </div>
-    <div class="container p-4">
+    <div class="container p-4" >
     <div *ngFor="let comment of commentsreverse">
         <div class="card mb-3">
               <div class="card-body">
@@ -30,5 +32,7 @@
             </div>
       </div>
     </div>
+
+ 
 
     

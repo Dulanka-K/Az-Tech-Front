@@ -56,7 +56,14 @@ export class LoginProfessionalComponent implements OnInit {
           this.toastr.successToastr('Login successfully.', 'Success!');
           localStorage.setItem('token', res.token);
           //window.location.reload();
-          this.router.navigate(['professional']);
+          if(this.authService.currentUser){
+            if(this.authService.currentUser.role === "professional"){
+              this.router.navigate(['professional']);
+            }else if(this.authService.currentUser.role === "admin"){
+              this.router.navigate(['admin-dashboard']);
+            }else{
+              this.router.navigate(['investor']);
+            }}
         }else{
           if(!response.json().confirmed){
             this.router.navigate(['verify', {'email': response.json().email, 'role':'professional'}]);

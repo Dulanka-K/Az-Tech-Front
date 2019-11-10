@@ -1,5 +1,5 @@
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/shared/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -14,6 +14,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import {ProfessionalDashbordComponent} from './professional/components/professional-dashbord/professional-dashbord.component'
 import {ProfessionalProfileComponent} from './professional/components/professional-profile/professional-profile.component'
 import { ChatComponent } from './chat/chat.component';
+import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
+import { AdminNavbarComponent } from './admin/components/admin-dashboard/admin-navbar/admin-navbar.component';
+import { AllIdeasComponent } from './admin/components/admin-dashboard/all-ideas/all-ideas.component';
+import { AllUsersComponent } from './admin/components/admin-dashboard/all-users/all-users.component';
 
 
 const routes: Routes = [
@@ -57,6 +61,15 @@ const routes: Routes = [
 {
   path: 'chat',
   component: ChatComponent
+},
+{
+  path:'admin-dashboard',
+  component: AdminDashboardComponent
+},
+
+{
+  path:'all-users',
+  component:AllUsersComponent
 },
 {
     path: 'investor',
