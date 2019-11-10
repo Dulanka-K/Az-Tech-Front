@@ -1,6 +1,5 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from 'src/app/shared/services/common.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
@@ -14,7 +13,6 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private common: CommonService,
     private toastr: ToastrManager
   ) {
     this.contactForm = fb.group({
@@ -26,20 +24,20 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
-  sendMessage(form) {
-    console.log(form.value);
-    this.common.sendMessage({
-      'email': form.value.email,
-      'content': form.value.content
-    }).subscribe(res=>{
-      if(res.json().success){
-        this.toastr.successToastr("Your suggestion has been sent successfully..!");
-      }else{
-        this.toastr.errorToastr("Making suggestion has some error.. Please try again..!");
-      }
-    })
+  // sendMessage(form) {
+  //   console.log(form.value);
+  //   this.common.sendMessage({
+  //     'email': form.value.email,
+  //     'content': form.value.content
+  //   }).subscribe(res=>{
+  //     if(res.json().success){
+  //       this.toastr.successToastr("Your suggestion has been sent successfully..!");
+  //     }else{
+  //       this.toastr.errorToastr("Making suggestion has some error.. Please try again..!");
+  //     }
+  //   })
 
-    this.contactForm.reset();
-  }
+  //   this.contactForm.reset();
+  // }
 
 }

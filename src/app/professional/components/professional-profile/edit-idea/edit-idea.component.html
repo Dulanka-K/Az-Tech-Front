@@ -1,7 +1,7 @@
 <div class="container p-4">
 <div class="jumbotron rounded-top rounded-bottom">
     <h2 class="h1-responsive card-header grey">{{idea.title}}
-    <button type="button" mdbBtn class="btn btn-success btn-sm float-right" (click)="boostIdea()" mdbWavesEffect>
+    <button type="button" mdbBtn class="btn btn-success btn-sm float-right" (click)="boostModal.show()" mdbWavesEffect>
       <i class="fas fa-star"></i> Boost</button></h2>
     <p class="lead mt-5">{{idea.content}}</p>
     <hr class="my-2">
@@ -9,7 +9,6 @@
         <button type="button" mdbBtn class="btn btn-outline-danger btn-sm float-right" (click)="deletemodal.show()" mdbWavesEffect>Delete</button>
         <button type="button" mdbBtn class="btn btn-outline-secondary btn-sm float-right" (click)="modal.show()" mdbWavesEffect>Edit</button>
     </p>
-    <!-- <a class="btn btn-primary btn-lg" role="button">Learn more</a> -->
 </div>
 </div>
 
@@ -85,3 +84,56 @@
     </div>
   </div>
 </div>
+
+<div mdbModal #boostModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBoostModalLabel"aria-hidden="true">
+  <div class="modal-dialog" role="document" style="color: darkgreen;">
+    <div class="modal-content" >
+      <div class="modal-header mdb-color lighten-5" >
+        <button type="button" class="close pull-right " aria-label="Close" (click)="boostModal.hide()" style="color: blue;">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-150" id="myModalLabel" style="color: rgb(15, 15, 15);">Boost Idea</h4>
+      </div>
+  
+    <div class="modal-body">
+     <form method="post" action="https://sandbox.payhere.lk/pay/checkout?merchant_id=1213196&return_url=https://localhost:3000&cancel_url=https://localhost:3000&items=&currency=LKR&amount=1000&first_name=sajeevan&last_name=wickramarathna&email=sajeee1dw@gmail.com&phone=0716325124&address=Galle&city=Galle&country=SriLanka&notify_url=https://localhost:3000">   
+     
+          <div class="form-row">
+      
+              <div class="form-group col-md-6">
+                <label for="inputfname">First name</label>
+                <input type="saman" name="first_name" class="form-control" id="inputfname">
+              </div>
+              
+              <div class="form-group col-md-6">
+                <label for="inputlname">Last name</label>
+                <input type="perera" name="last_name" class="form-control" id="inputlname">
+              </div>
+            </div> 
+            <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputemail">Email</label>
+          <input type="email" name="email" class="form-control" id="inputrmail">
+        </div>
+        
+        <div class="form-group col-md-6">
+          <label for="inputtel">Phone</label>
+          <input type="text" name="phone" class="form-control" id="inputtel">
+        </div>
+      </div>
+  
+      <div class="form-row">
+      
+          <div class="form-group col-md-6">
+            <label for="inputideaid">Idea Title</label>
+            <input type="saman" name="order_id" class="form-control" id="inputideaid" disabled placeholder="{{idea.title}}">
+          </div>
+        </div>
+  
+      
+      <button type="submit" class="btn btn-outline-secondary btn-md float-right"  value="Buy Now" (click)="boostIdea()">Boost Now</button>
+    </form>
+  </div>
+   
+  </div>
+  </div>

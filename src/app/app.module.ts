@@ -23,8 +23,6 @@ import { LoginProfessionalComponent } from './components/login/login-professiona
 import { VerificationComponent } from './components/shared/verification/verification.component';
 import { AuthService } from './shared/services/auth.service';
 import { AuthGaurd } from './shared/services/authguard.service';
-import { CommonService } from './shared/services/common.service';
-import { PusherService } from './shared/services/pusher.service';
 import { InvestorService } from './investor/shared/services/investor-service.service';
 import { RouterModule } from '@angular/router';
 import { professionalService } from './professional/shared/services/professional.service';
@@ -78,8 +76,6 @@ import { ChatService } from './shared/services/chat.service';
     AuthGaurd,
     InvestorService,
     professionalService,
-    PusherService,
-    CommonService,
     ChatService
   ],
   bootstrap: [AppComponent],

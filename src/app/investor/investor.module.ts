@@ -6,7 +6,6 @@ import { InvestorRoutingModule } from './investor-routing.module';
 import { InvestorDashboardComponent } from './components/investor-dashboard/investor-dashboard.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { InvestorService } from './shared/services/investor-service.service';
-import { CommonService } from '../shared/services/common.service';
 import { InvestorProfileComponent } from './components/profile/profile.component';
 import { NgChatModule } from 'ng-chat';
 import { FloatingActionMenuModule } from 'ng2-floating-action-menu';
@@ -55,7 +54,6 @@ import { InvestedIdeasComponent } from './components/profile/invested-ideas/inve
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
     InvestorService,
-    CommonService,
   ]
 })
 export class InvestorModule { }

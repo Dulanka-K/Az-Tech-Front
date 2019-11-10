@@ -116,6 +116,7 @@ export class EditIdeaComponent implements OnInit {
     .subscribe(res=>{
       console.log(res.json());
     })
+    window.location.reload();
   }
 
 }

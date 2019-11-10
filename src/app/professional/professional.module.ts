@@ -6,7 +6,6 @@ import { ProfessionalDashbordComponent } from 'src/app/professional/components/p
 import { CategoryviewComponent } from 'src/app/professional/components/professional-dashbord/categoryview/categoryview.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { professionalService } from './shared/services/professional.service';
-import { CommonService } from '../shared/services/common.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -59,7 +58,6 @@ import { RequestsComponent } from './components/requests/requests.component';
     schemas: [ NO_ERRORS_SCHEMA ],
     providers: [
       professionalService,
-      CommonService,
       AuthService
     ]
   })

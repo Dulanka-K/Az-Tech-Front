@@ -23,8 +23,8 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('token');
-    localStorage.removeItem('gcrToken');
-    window.location.reload();
+     localStorage.removeItem('gcrToken');
+    // window.location.reload();
     this.router.navigate(['']);
   }
 

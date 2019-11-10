@@ -12,7 +12,23 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {}
+user:any;
+
+  ngOnInit() {
+
+   
+  if(this.authService.currentUser.role==="professional"){
+  this.user ="PROFESSIONAL USER";
+  }else if(this.authService.currentUser.role==="investor"){
+    this.user ="INVESTOR";
+  }else{
+    this.user ="ADMINISTRATION";
+  }
+  
+  
+  }
+
+
 
   logOut(){
     this.authService.logOut();
