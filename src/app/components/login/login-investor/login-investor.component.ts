@@ -56,28 +56,25 @@ export class LoginInvestorComponent implements OnInit {
         console.log(response.json());
         let res = response.json();
         if(res.success){
-          this.toastr.successToastr('Login successfully', 'Success!');
+          
           localStorage.setItem('token', res.token);
-          if(this.authService.currentUser){
-            if(this.authService.currentUser.role === "professional"){
-              this.router.navigate(['professional']);
+          
+            if(this.authService.currentUser.role === "investor"){
+              this.toastr.successToastr('Login successful.', 'Success!');
+              this.router.navigate(['investor']);
             }else if(this.authService.currentUser.role === "admin"){
               this.router.navigate(['admin-dashboard']);
             }else{
-              this.router.navigate(['investor']);
-            }}
-          //window.location.reload();
+              this.toastr.successToastr('You are a Professional.', 'Logged-in as a Professional!');
+              this.router.navigate(['professional']);
+            }
+        
         }else{
-          if(!res.confirmed){
-            this.router.navigate(['verify', {'email': response.json().email, 'role':'investor'}]);
-            this.toastr.warningToastr('Please comfirm your email');
-          }else{
-            this.loginErr = true;
+          
             this.toastr.errorToastr('Login error, Check username or password.', 'Oops!');
-          }
+          
         }
       }, err=>{
-        this.loginErr = true;
         this.toastr.errorToastr('Login error, Check username or password.', 'Oops!');
       });   
       this.form.reset();     
@@ -88,7 +85,12 @@ export class LoginInvestorComponent implements OnInit {
 
   forgotPassword(email){
     console.log(email)
-    this.RegisterService.email.emit(email);
+    this.RegisterService.forgotPassword(email)
+      .subscribe(res=>{
+        console.log(res.json());
+        this.toastr.successToastr('Check your email for the new password.');
+      })
+    //this.RegisterService.email.emit(email);
 }
 
 }

@@ -37,6 +37,32 @@
           </div>
         </div>
 
+        <!-- <div *ngIf="editStage" class="row mt-4">
+          <div class="col-md-4">Current Password</div>
+          <div class="col-md-8">
+            <input type="text" class="borderless" placeholder="Current Password" formControlName="password">
+          </div>
+        </div>
+
+        <div *ngIf="editStage" class="row mt-4">
+          <div class="col-md-4">New Password</div>
+          <div class="col-md-8">
+            <input type="text" class="borderless" placeholder="New Password" formControlName="newPassword">
+          </div>
+        </div>
+
+        <div *ngIf="editStage" class="row mt-4">
+          <div class="col-md-4">Confirm Password</div>
+          <div class="col-md-8">
+            <input type="text" class="borderless" placeholder="Confirm Password" formControlName="confirmPassword">
+          </div>
+        </div> -->
+        <!-- <small class="invalidInput" *ngIf="confirmPassword.touched && confirmPassword?.errors ||
+        confirmPassword.touched && confirmPassword.errors?.mismatch">
+          Password doesn't match
+      </small> -->
+      <!-- <span *ngIf = "!match"><p class="text-danger">New password not match</p></span> -->
+
       </div>
     
     
@@ -46,7 +72,7 @@
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-          <button class="btn btn-sm btn-success d-flex" type="submit" *ngIf="editStage">Save</button>
+          <button class="btn btn-sm btn-success d-flex" type="submit" *ngIf="editStage" >Save</button>
           <button class="btn btn-sm btn-danger d-flex" type="button" (click)="editProfile()" *ngIf="!editStage">Edit</button>
         </div>
         <div class="col-md-4"></div>
@@ -55,4 +81,41 @@
     </div>
     
     
+    </form>
+
+    <form [formGroup]="passwordform">
+
+      <div>
+      <div class="row mt-4">
+        <div class="col-md-4">Current Password</div>
+        <div class="col-md-8">
+          <input type="text" class="borderless" placeholder="Current Password" formControlName="password">
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-4">New Password</div>
+        <div class="col-md-8">
+          <input type="text" class="borderless" placeholder="New Password" formControlName="newPassword">
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-4">Confirm Password</div>
+        <div class="col-md-8">
+          <input type="text" class="borderless" placeholder="Confirm Password" formControlName="confirmPassword">
+        </div>
+      </div>
+      
+    <span *ngIf = "!match"><p class="text-danger">New password not match</p></span>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+    <button class="btn btn-sm btn-success d-flex" (click)="changePassword()" >Change Password</button>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+
     </form>

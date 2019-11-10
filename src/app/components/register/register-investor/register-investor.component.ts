@@ -73,19 +73,16 @@ export class RegisterInvestorComponent implements OnInit {
       subscribe(response => {
         let res = response.json();
         if(res.success){
-          this.toastr.successToastr('User registered succefully.', 'Success!');
+          this.toastr.successToastr('Registered as an Investor.', 'Success!');
           localStorage.setItem('token', res.token);
           this.router.navigate(['investor']);
         }else{
-          if(res.has){
-            this.has = true;
-            this.toastr.warningToastr('Email already registered.', 'Oops!');
-          }else{
-            this.regErr = true;
-            this.toastr.errorToastr('Register error, please check your details.', 'Oops!');          }
-        }
-      }, err=>{
-        this.toastr.errorToastr('Register error, please check your details.', 'Oops!');      });   
+            this.toastr.errorToastr('Register error, please check your details.', 'Oops!');
+        
+      }
+    },err=>{
+      this.toastr.errorToastr('Register error, please check your details.', 'Oops!');
+    });  
       form.reset();    
   }  
 

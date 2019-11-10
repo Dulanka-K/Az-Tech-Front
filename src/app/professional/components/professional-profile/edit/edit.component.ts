@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { professionalService } from 'src/app/professional/shared/services/professional.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators,FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { PasswordValidator } from 'src/app/shared/validators/password.validator';
+
 
 @Component({
   selector: 'prof-app-edit',
@@ -15,6 +17,8 @@ export class ProfessionalProfileEditComponent implements OnInit {
   @Input() fname;
   @Input() lname;
   @Input() country;
+  match: boolean = true;
+  passwordform:FormGroup;
   
   
   constructor(
@@ -27,13 +31,21 @@ export class ProfessionalProfileEditComponent implements OnInit {
         fname:[this.fname, Validators.required],
         lname:[this.lname, Validators.required],
         country:[this.country, Validators.required]
+        
       });
     
    }
 
   ngOnInit() {
-   
+    
+    this.passwordform = this.fb.group({
+      password:['',Validators.required],
+        newPassword:['',Validators.required],
+        confirmPassword:['',Validators.required]
+    });
+
   }
+
 
   countries: string[] = [
     "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", 
@@ -100,6 +112,29 @@ export class ProfessionalProfileEditComponent implements OnInit {
       lname: this.lname,
       country: this.country,
     })
+  }
+
+  changePassword(){
+    let uId=this.auth.currentUser._id;
+
+    if(this.passwordform.get('newPassword').value===this.passwordform.get('confirmPassword').value){
+      this.match= true;
+      console.log(this.passwordform.value)
+      this.professionalService.changePassword(this.passwordform.value,uId)
+      .subscribe((res:any)=>{
+        console.log(res);
+        
+
+        if(res.json().state){
+          this.toastr.successToastr('Password Changed!');
+        }
+        else{
+          this.toastr.errorToastr('Password did not change!');
+        }
+      })
+    }else{
+      this.match = false
+    }
   }
 
 }

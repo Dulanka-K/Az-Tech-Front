@@ -89,5 +89,9 @@ export class professionalService {
         return this.http.get(environment.url+'/boostedIdeas/'+status);
     }
 
+    changePassword(resetpassword,id){
+        return this.http.put(environment.url+'/editUserProfile/'+id,resetpassword);
+    }
+
 
 }

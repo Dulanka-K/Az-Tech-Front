@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { RegisterService } from 'src/app/shared/services/register.service'
+
 
 @Component({
   selector: 'app-login-professional',
@@ -14,12 +16,13 @@ export class LoginProfessionalComponent implements OnInit {
   form;
   loginErr: boolean = false;
 
-  spinner = false;
+  //spinner = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private RegisterService:RegisterService,
     public toastr: ToastrManager
   ) { 
     this.form = this.fb.group({
@@ -43,40 +46,34 @@ export class LoginProfessionalComponent implements OnInit {
   
 
   onSubmit(form){
-    this.spinner = true;
+    //this.spinner = true;
     let user = form.value;
-    user['role'] = 'professional';
+    //user['role'] = 'professional';
     this.authService.loginUser(user).
       subscribe(response=>{
-        this.spinner = false;
+        //this.spinner = false;
         console.log(response.json());
         let res = response.json();
 
         if(res.success){
-          this.toastr.successToastr('Login successfully.', 'Success!');
+          
           localStorage.setItem('token', res.token);
-          //window.location.reload();
-          if(this.authService.currentUser){
+        
             if(this.authService.currentUser.role === "professional"){
+              this.toastr.successToastr('Login successful.', 'Success!');
               this.router.navigate(['professional']);
             }else if(this.authService.currentUser.role === "admin"){
               this.router.navigate(['admin-dashboard']);
             }else{
+              this.toastr.successToastr('You are an Investor.', 'Logged-in as an Investor!');
               this.router.navigate(['investor']);
-            }}
-        }else{
-          if(!response.json().confirmed){
-            this.router.navigate(['verify', {'email': response.json().email, 'role':'professional'}]);
-            this.toastr.warningToastr('Please comfirm your email');
-          }else{
-            this.loginErr = true; 
-            this.toastr.errorToastr('Login error, Check username or password.', 'Oops!');
-          }
+            }
 
+        }else{
+            this.toastr.errorToastr('Login error, Check username or password.', 'Oops!');
         }
       },
       err => {
-        this.loginErr = true;
         this.toastr.errorToastr('Login error, Check username or password.', 'Oops!');
       });   
       
@@ -85,6 +82,16 @@ export class LoginProfessionalComponent implements OnInit {
 
   get email(){return this.form.get('email')}
   get password(){return this.form.get('password')}
+
+  forgotPassword(email){
+    console.log(email)
+    this.RegisterService.forgotPassword(email)
+      .subscribe(res=>{
+        console.log(res.json());
+        this.toastr.successToastr('Check your email for the new password.');
+      })
+    //this.RegisterService.email.emit(email);
+}
 
 }
 

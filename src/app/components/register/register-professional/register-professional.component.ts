@@ -42,6 +42,7 @@ export class RegisterProfessionalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cpassword
   }
 
   get firstName() {
@@ -71,37 +72,17 @@ export class RegisterProfessionalComponent implements OnInit {
       subscribe(response => {
         let res = response.json();
         if (res.success) {
-          this.toastr.successToastr('This is success toast.', 'Success!');
+          this.toastr.successToastr('Registered as a Professional.',' Success!');
           localStorage.setItem('token', res.token);
-          this.router.navigate(['professional/profile']);
-        } else {
-          if (res.has) {
-            this.has = true;
-          } else {
-            this.regErr = true;
+          this.router.navigate(['professional']);
+        } else 
+        {
             this.toastr.errorToastr('Register error, please check your details.', 'Oops!');
-          }
         }
-      }, err => {
-        this.regErr = true;
+      },err=>{
         this.toastr.errorToastr('Register error, please check your details.', 'Oops!');
       });
     form.reset();
   }
-
-  // googleReg() {
-  //   this.registerService.googleRegister('professional').
-  //     subscribe(response => {
-  //       let res = response.json();
-  //     });
-  // }
-
-  // facebookRegister() {
-  //   this.registerService.facebokRegister('investor')
-  //     .subscribe(res => {
-  //       console.log(res.json());
-  //     })
-  //   console.log("facebook log");
-  // }
 
 }

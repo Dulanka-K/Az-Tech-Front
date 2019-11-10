@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/shared/services/admin.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
+
 
 @Component({
   selector: 'app-boosted-ideas',
@@ -9,7 +11,9 @@ import { AdminService } from 'src/app/shared/services/admin.service';
 export class BoostedIdeasComponent implements OnInit {
 
   constructor(
-    private adminService:AdminService
+    private adminService:AdminService,
+    private toastr: ToastrManager
+
   ) { }
 
   ideas: any;
@@ -21,6 +25,15 @@ export class BoostedIdeasComponent implements OnInit {
     .subscribe(res=>{
       this.ideas=res.json();
       this.ideasreverse=this.ideas.reverse();
+    });
+  }
+
+  deleteIdea(iId){
+    this.adminService.deleteIdea(iId).subscribe(res=>{
+      if(res.json().success){
+        this.toastr.successToastr('Idea deleted successfully!');
+        window.location.reload();
+      }
     });
   }
 

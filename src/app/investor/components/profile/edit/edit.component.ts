@@ -1,6 +1,6 @@
 import { InvestorService } from './../../../shared/services/investor-service.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators,FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
 
@@ -18,6 +18,9 @@ export class InvestorProfileEditComponent implements OnInit {
   @Input() field;
   @Input() about;
   @Input() organisation;
+  match: boolean = true;
+  passwordform:FormGroup;
+
 
 
   constructor(
@@ -37,7 +40,11 @@ export class InvestorProfileEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.passwordform = this.fb.group({
+      password:['',Validators.required],
+        newPassword:['',Validators.required],
+        confirmPassword:['',Validators.required]
+    });
   }
 
   countries: string[] = [
@@ -113,5 +120,29 @@ export class InvestorProfileEditComponent implements OnInit {
       about:this.about
     })
   }
+
+  changePassword(){
+    let uId=this.auth.currentUser._id;
+
+    if(this.passwordform.get('newPassword').value===this.passwordform.get('confirmPassword').value){
+      this.match= true;
+      console.log(this.passwordform.value)
+      this.investorService.changePassword(this.passwordform.value,uId)
+      .subscribe((res:any)=>{
+        console.log(res);
+        
+
+        if(res.json().state){
+          this.toastr.successToastr('Password Changed!');
+        }
+        else{
+          this.toastr.errorToastr('Password did not change!');
+        }
+      })
+    }else{
+      this.match = false
+    }
+  }
+
 
 }

@@ -47,10 +47,6 @@ const routes: Routes = [
     component: LoginInvestorComponent
 },
 {
-    path: 'verify',
-    component: VerificationComponent
-},
-{
     path: 'registerInvestor',
     component: RegisterInvestorComponent
 },
